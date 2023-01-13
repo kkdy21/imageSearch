@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/Ui/search/search_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../../data/model/photo.dart';
 
@@ -11,7 +12,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final viewModel = SearchViewModel();
   final textController = TextEditingController();
 
   @override
@@ -23,6 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<SearchViewModel>();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -44,16 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   suffixIcon: IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () async {
-                      setState(() {
-                        viewModel.isLoading = true;
-                      });
-
-                      await viewModel.search('조보아');
-
-                      //rerendering
-                      setState(() {
-                        viewModel.isLoading = false;
-                      });
+                      await viewModel.search(textController.text);
                     },
                   ),
                   suffixStyle: TextStyle(color: Colors.green),

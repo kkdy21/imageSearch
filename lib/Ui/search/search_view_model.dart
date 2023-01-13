@@ -14,6 +14,10 @@ class SearchViewModel extends ChangeNotifier{
     bool isLoading = false;
 
     Future<void> search(String query) async {
+        isLoading = true;
+        notifyListeners();
         await _photoRepository.getPhotos(query).then((res) => photos = res);
+        isLoading = false;
+        notifyListeners();
     }
 }

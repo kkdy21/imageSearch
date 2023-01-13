@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/Ui/search/search_screen.dart';
+import 'package:hello_flutter/Ui/search/search_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SearchViewModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
