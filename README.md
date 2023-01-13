@@ -1,5 +1,5 @@
 # 프로젝트 설명
-- flutter와 pixabay API를 활용한 이미지 검색 프로그
+- flutter와 pixabay API를 활용한 이미지 검색 프로그램
 
 # 사용기술
 - 언어 : dart
